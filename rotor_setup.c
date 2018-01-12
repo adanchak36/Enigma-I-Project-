@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include "rotor_setup.h"
+#include <string.h> //strcpy
 
 void getMachineInfo(machine *machine1){
+    //let's do some bounds checking for user input
+        // extra functions including do while checks 
     int i; //counter
     
     printf("Walzenlage Eingeben:");
@@ -18,6 +21,73 @@ void getMachineInfo(machine *machine1){
     
 }//getMachineInfo
 
+void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], machine *machine1){
+    int i;
+    char rotor_1[26] = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
+    char rotor_2[26] = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
+    char rotor_3[26] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
+    char rotor_4[26] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
+    char rotor_5[26] = "VZBRGITYUPSDNHLXAWMJQOFECK";
+    
+    
 
+    //probably should be pointers
+    for(i = 0; i < 3; i++){
+        if (machine1->rotor_order[i] == 1){
+            if (i == 0){
+                strcpy(left_rotor, rotor_1);
+            }else if (i == 1){
+                strcpy(mid_rotor, rotor_1);
+            }else{
+                strcpy(right_rotor, rotor_1);
+            }
+            //i = 0 left
+            //i = 1 mid
+            //i = 2 right
+        }else if (machine1->rotor_order[i] == 2){
+            if(i == 0){
+                strcpy(left_rotor, rotor_2);
+            }else if (i == 1){
+                strcpy(mid_rotor, rotor_2);
+            }else{
+                strcpy(right_rotor, rotor_2);
+            }
+        }else if (machine1->rotor_order[i] == 3){
+            if (i == 0){
+                strcpy(left_rotor, rotor_3);
+            }else if (i == 1){
+                strcpy(mid_rotor, rotor_3);
+            }else{
+                strcpy(right_rotor, rotor_3);
+            }
+        }else if (machine1->rotor_order[i] == 4){
+            if (i == 0){
+                strcpy(left_rotor, rotor_4);
+            }else if (i == 1){
+                strcpy(mid_rotor, rotor_4);
+            }else{
+                strcpy(right_rotor, rotor_4);
+            }
+            
+        }else{//5
+            if (i == 0){
+                strcpy(left_rotor, rotor_5);
+            }else if (i == 1){
+                strcpy(mid_rotor, rotor_5);
+            }else{
+                strcpy(right_rotor, rotor_5);
+            }
+            
+        }
+    }//end of for loop
+    
+    
 
+    void setup_rotors((char left_rotor[], char mid_rotor[], char right_rotor[], machine *machine1){
+        
+        
+        
+        
+        
+    }
 
