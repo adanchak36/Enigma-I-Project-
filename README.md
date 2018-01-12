@@ -6,7 +6,7 @@ Use the machine by first entering three conditions.
   2. Ringstellung: The ring settings. 
   3. Steckerverbindungen: Plug board settings. 
   
-  
+Rest of machine is still being developed. 
   
   
   References: 
