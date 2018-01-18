@@ -1,11 +1,13 @@
 #include <stdio.h> //printf, scanf
-#include "rotor_setup.h"
+#include "machine_struct.h"
 #include <stdlib.h> //sizeof
-//#include "header.h" // use header functions
+
 
 int main(void){
     char left_rotor[26], mid_rotor[26], right_rotor[26];
-    int i; //DEBUG
+    //int i; //DEBUG
+    char plaintext;
+    int a, b; 
     
     machine machine1; //struct create user's machine setup
     
@@ -13,29 +15,27 @@ int main(void){
     
     setup_Machine(left_rotor, mid_rotor, right_rotor, &machine1);
     
+    for (a = 0; a < 10; a++){
+        printf("%c", machine1.plug_board1[a]);
+        if (a == 9){
+            printf("\n");
+        }
+    }//for end (DEBUG)
     
-    printf("%d %d %d\n", machine1.rotor_order[0], machine1.rotor_order[1], machine1.rotor_order[2]);//DEBUG
+    for (b = 0; b < 10; b++){
+        printf("%c", machine1.plug_board1[a]);
+        if (b == 9){
+            printf("\n");
+        }
+    }//for end (DEBUG)
     
-    for(i = 0; i < sizeof(left_rotor); i++){
-        printf("%c", left_rotor[i]);
-    }
+    //setup_rotors(left_rotor, mid_rotor, right_rotor, &machine1);
     
-    printf("\n");
-
-    for(i = 0; i < sizeof(mid_rotor); i++){
-        printf("%c", mid_rotor[i]);
-    }
+    plaintext = input_enigma(&machine1); 
     
-    printf("\n");
-    
-    for(i = 0; i < sizeof(right_rotor); i++){
-        printf("%c", right_rotor[i]);
-    }
-    
-    printf("\n");
+    printf("%c", plaintext);
     
     
-    setup_rotors(left_rotor, mid_rotor, right_rotor, &machine1);
     
     return(0);
     

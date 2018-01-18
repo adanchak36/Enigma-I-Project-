@@ -1,20 +1,11 @@
-//
-//  enigma_encode.h
-//  Enigma_Machine
-//
-//  Created by Alexander Danchak on 1/8/18.
-//  Copyright © 2018 Alexander Danchak. All rights reserved.
-//
-
-#ifndef enigma_encode_h
-#define enigma_encode_h
-
 #include <stdio.h>
+#include "rotor_setup.h"
+#include "machine_struct.h"
 
-#endif /* enigma_encode_h */
+char input_enigma(struct machine *machine1); //input->scramble plugboard
 
-const char rotor_I[26] = 
-const int rotor_II =
-const int rotor_III =
+char input_plaintext(void); //takes plaintext character input
+
+
 
 

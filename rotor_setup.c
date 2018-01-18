@@ -1,11 +1,11 @@
 #include <stdio.h>
+#include "machine_struct.h"
 #include "rotor_setup.h"
 #include <string.h> //strcpy
 
 void getMachineInfo(machine *machine1){
-    //let's do some bounds checking for user input
+    //let's do some bounds checking for user input (DANGEROUS RIGHT NOW!!!!!!!!!!!!)
         // extra functions including do while checks 
-    int i; //counter
     
     printf("Walzenlage Eingeben:");
     scanf("%d %d %d", &machine1->rotor_order[0], &machine1->rotor_order[1], &machine1->rotor_order[2]);
@@ -16,7 +16,10 @@ void getMachineInfo(machine *machine1){
     printf("\n");
     
     printf("Steckerverindungen Eingeben:");
-    scanf("%c%c %c%c %c%c %c%c %c%c", &machine1->plug_board[0], &machine1->plug_board[1], &machine1->plug_board[2], &machine1->plug_board[3], &machine1->plug_board[4], &machine1->plug_board[5], &machine1->plug_board[6], &machine1->plug_board[7], &machine1->plug_board[8], &machine1->plug_board[9]); 
+    scanf("%c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c", &machine1->plug_board1[0], &machine1->plug_board2[0], &machine1->plug_board1[1], &machine1->plug_board2[1], &machine1->plug_board1[2], &machine1->plug_board2[2], &machine1->plug_board1[3], &machine1->plug_board2[3], &machine1->plug_board1[4], &machine1->plug_board2[4],&machine1->plug_board1[5], &machine1->plug_board2[5],&machine1->plug_board1[6], &machine1->plug_board2[6],&machine1->plug_board1[7], &machine1->plug_board2[7],&machine1->plug_board1[8], &machine1->plug_board2[8],&machine1->plug_board1[9], &machine1->plug_board2[9]);
+    
+    printf("%c", machine1->plug_board1[0]);
+    
     printf("\n");
     
 }//getMachineInfo
@@ -30,7 +33,6 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
     char rotor_5[26] = "VZBRGITYUPSDNHLXAWMJQOFECK";
     
     
-
     //probably should be pointers
     for(i = 0; i < 3; i++){
         if (machine1->rotor_order[i] == 1){
@@ -80,14 +82,9 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
             
         }
     }//end of for loop
-    
+}
+
+
     
 
-    void setup_rotors((char left_rotor[], char mid_rotor[], char right_rotor[], machine *machine1){
-        
-        
-        
-        
-        
-    }
 
