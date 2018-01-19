@@ -31,7 +31,10 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
     char rotor_3[26] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
     char rotor_4[26] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
     char rotor_5[26] = "VZBRGITYUPSDNHLXAWMJQOFECK";
-    
+    //M4 Machine rotors below 
+    //char rotor_6[26] = "JPGVOUMFYQBENHZRDKASXLICTW";
+    //char rotor_7[26] = "NZJHGRCXMYSWBOUFAIVLPEKQDT";
+    //char rotor_8[26] = "FKQHTLXOCBJSPDZRAMEWNIUYGV";
     
     //probably should be pointers
     for(i = 0; i < 3; i++){
@@ -85,6 +88,6 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
 }
 
 
-    
+
 
 

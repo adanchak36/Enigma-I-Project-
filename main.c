@@ -1,13 +1,13 @@
-#include <stdio.h> //printf, scanf
-#include "machine_struct.h"
-#include <stdlib.h> //sizeof
+#include <stdio.h>         // printf, scanf
+#include "machine_struct.h"// struct machine1
+#include "rotor_setup.h"   // getMachineInfo(), setup_Machine(), setup_rotors()
+#include "enigma_encode.h" // input_enigma()
+#include <stdlib.h>        // sizeof
 
 
 int main(void){
     char left_rotor[26], mid_rotor[26], right_rotor[26];
-    //int i; //DEBUG
     char plaintext;
-    int a, b; 
     
     machine machine1; //struct create user's machine setup
     
@@ -15,20 +15,8 @@ int main(void){
     
     setup_Machine(left_rotor, mid_rotor, right_rotor, &machine1);
     
-    for (a = 0; a < 10; a++){
-        printf("%c", machine1.plug_board1[a]);
-        if (a == 9){
-            printf("\n");
-        }
-    }//for end (DEBUG)
-    
-    for (b = 0; b < 10; b++){
-        printf("%c", machine1.plug_board1[a]);
-        if (b == 9){
-            printf("\n");
-        }
-    }//for end (DEBUG)
-    
+    print_array(&machine1);
+   
     //setup_rotors(left_rotor, mid_rotor, right_rotor, &machine1);
     
     plaintext = input_enigma(&machine1); 

@@ -3,6 +3,8 @@
 #include <stdio.h> //printf, scanf
 #include <stdlib.h> //sizeof
 
+static char input_plaintext(void); //takes plaintext character input from input_enigma (only used in this)
+
 char input_enigma(machine *machine1){
     char plaintext;
     int i;
@@ -20,7 +22,7 @@ char input_enigma(machine *machine1){
 }//end of input_enigma
 
 
-char input_plaintext(void){
+static char input_plaintext(void){
     char c;
     printf("Enter Plaintext Character:");
     scanf("%s", &c);
