@@ -18,7 +18,7 @@ int main(void){
     
     setup_Machine(left_rotor, mid_rotor, right_rotor, &machine1); //setup rotor order... ex:3 2 1
     
-    //ringSet(left_rotor, mid_rotor, right_rotor, &machine1);
+    ringSet(left_rotor, mid_rotor, right_rotor, &machine1);
     
     printf("\nRight rotor: ");
     for(int i = 0; i < ALPH; i++){
@@ -37,7 +37,6 @@ int main(void){
     
     //print_array(&machine1);
    
-    setup_rotors(left_rotor, mid_rotor, right_rotor, &machine1);
     /*
     plaintext = input_enigma(&machine1); 
     
@@ -48,6 +47,7 @@ int main(void){
     return(0);
     
 }//MAIN END
+
 
 
 
