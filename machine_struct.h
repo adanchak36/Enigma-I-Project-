@@ -9,3 +9,5 @@ typedef struct machine{
 } machine;
 
 #endif
+
+#define ALPH 27 //constant alphabet size 
