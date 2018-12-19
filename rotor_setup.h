@@ -5,8 +5,4 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], stru
 
 void setup_rotors(char left_rotor[], char mid_rotor[], char right_rotor[], struct machine *machine1);
 
-void second_function(char *left_rotor[]); 
-
-
-
-//struct create 
+void ringSet(char left_rotor[], char mid_rotor[], char right_rotor[], struct machine *machine1); //
