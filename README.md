@@ -9,6 +9,8 @@ Use the machine by first entering three conditions.
 User will enter a character to be encrypted/decrypted. 
 
 Rest of machine is still being developed. 
+
+Read the Wiki for details of encryption algorithm and implementation. 
   
   
   References: 
