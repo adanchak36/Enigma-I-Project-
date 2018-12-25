@@ -15,6 +15,10 @@ void getMachineInfo(machine *machine1){
     scanf("%d %d %d", &machine1->rotor_sett[0], &machine1->rotor_sett[1], &machine1->rotor_sett[2]);
     printf("\n");
     
+    printf("Enter reflector: ");
+    scanf(" %c", &machine1->reflector);
+    printf("\n");
+    
     printf("Steckerverindungen Eingeben:");
     scanf("%c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c %c%c", &machine1->plug_board1[0], &machine1->plug_board2[0], &machine1->plug_board1[1], &machine1->plug_board2[1], &machine1->plug_board1[2], &machine1->plug_board2[2], &machine1->plug_board1[3], &machine1->plug_board2[3], &machine1->plug_board1[4], &machine1->plug_board2[4],&machine1->plug_board1[5], &machine1->plug_board2[5],&machine1->plug_board1[6], &machine1->plug_board2[6],&machine1->plug_board1[7], &machine1->plug_board2[7],&machine1->plug_board1[8], &machine1->plug_board2[8],&machine1->plug_board1[9], &machine1->plug_board2[9]);
     
@@ -22,7 +26,7 @@ void getMachineInfo(machine *machine1){
     
 }// end of getMachineInfo
 
-void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], machine *machine1){
+void setup_Machine(char reflector[], char left_rotor[], char mid_rotor[], char right_rotor[], machine *machine1){
     char rotor_1[ALPH] = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
     char rotor_2[ALPH] = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
     char rotor_3[ALPH] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
@@ -32,6 +36,7 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
     //char rotor_6[ALPH] = "JPGVOUMFYQBENHZRDKASXLICTW";
     //char rotor_7[ALPH] = "NZJHGRCXMYSWBOUFAIVLPEKQDT";
     //char rotor_8[ALPH] = "FKQHTLXOCBJSPDZRAMEWNIUYGV";
+    char reflect_B[ALPH] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
     
     
     switch(machine1->rotor_order[0]){ //input correct user settings into right_rotor[]
@@ -86,6 +91,12 @@ void setup_Machine(char left_rotor[], char mid_rotor[], char right_rotor[], mach
         case 5:
             strncpy(left_rotor, rotor_5, ALPH);
             break;
+    }
+    
+    switch(machine1->reflector){
+        case 'B':
+            strncpy(reflector, reflect_B, ALPH);
+            break; 
     }
     
 }
@@ -158,6 +169,9 @@ void ringSet(char left_rotor[], char mid_rotor[], char right_rotor[], machine *m
     }
     
 }
+
+
+
 
 
 
