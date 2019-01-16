@@ -8,35 +8,120 @@
 
 #include "Machine.hpp"
 #include <iostream>
+#include <string> 
 
 
 Machine::Machine(){
     std::cout<<"Machine created"<<std::endl;
+    this->setRotorOrder();                      //Sets rotor order
+    this->setRingPosition();                    //Set ring position
 }
 
-void Machine::setOrder(int n1, int n2, int n3){
-    this->rotor_Order[0] = n1;
-    this->rotor_Order[1] = n2;
-    this->rotor_Order[2] = n2; 
-}
-
-void Machine::setStartPosition(int n1, int n2, int n3){
-    this->rotor_Start[0] = n1;
-    this->rotor_Start[1] = n2;
-    this->rotor_Start[2] = n3;
-}
-
-void Machine::selectReflector(char relector){
-    char reflector_B[ALPH] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
-    //add more reflectors
+void Machine::setRotorOrder(){
+    std::string rotor_1("EKMFLGDQVZNTOWYHXUSPAIBRCJ");
+    std::string rotor_2("AJDKSIRUXBLHWTMCQGZNPYFVOE");
+    std::string rotor_3("BDFHJLCPRTXVZNYEIWGAKMUSQO");
+    std::string rotor_4("ESOVPZJAYQUIRHXLNFTGKDCMWB");
+    std::string rotor_5("VZBRGITYUPSDNHLXAWMJQOFECK");
     
-    switch(relector){
+    int left, mid, right;
+    std::cout<<"Enter Rotor Order: ";
+    std::cin>>left;
+    std::cin>>mid;
+    std::cin>>right;
+    std::cout<<"/n";
+    
+    /*left rotor assignment */
+    switch(left){
+        case 1:
+            this->left_rotor = rotor_1;
+            break;
+        case 2:
+            this->left_rotor = rotor_2;
+            break;
+        case 3:
+            this->left_rotor = rotor_3;
+            break;
+        case 4:
+            this->left_rotor = rotor_4;
+            break;
+        case 5:
+            this->left_rotor = rotor_5;
+            break;
+    }/*end of left switch*/
+    
+    /*mid rotor assignment */
+    switch(mid){
+        case 1:
+            this->mid_rotor = rotor_1;
+            break;
+        case 2:
+            this->mid_rotor = rotor_2;
+            break;
+        case 3:
+            this->mid_rotor = rotor_3;
+            break;
+        case 4:
+            this->mid_rotor = rotor_4;
+            break;
+        case 5:
+            this->mid_rotor = rotor_5;
+            break;
+    }/*end of mid switch*/
+    
+    /*right rotor assignment */
+    switch(left){
+        case 1:
+            this->right_rotor = rotor_1;
+            break;
+        case 2:
+            this->right_rotor = rotor_2;
+            break;
+        case 3:
+            this->right_rotor = rotor_3;
+            break;
+        case 4:
+            this->right_rotor = rotor_4;
+            break;
+        case 5:
+            this->right_rotor = rotor_5;
+            break;
+    }/*end of right switch*/
+}
+
+void Machine::setRingPosition(){
+    int left, mid, right;
+    
+    std::cout<<"Enter Ring Position ";
+    std::cin>>left;
+    std::cin>>mid;
+    std::cin>>right;
+    std::cout<<"/n";
+    
+    
+}
+    
+    
+    
+
+void Machine::selectReflector(){
+    std::string reflector_B("YRUHQSLDPXNGOKMIEBFZCWVJAT");
+    //add more reflectors
+    char reflect;
+    
+    std::cout<<"Enter reflector: ";
+    std::cin>>reflect;
+    std::cout<<"/n";
+    
+    switch(reflect){
         case'B':
             //move B into this->reflector
             break;
     }
     
 }/*end selectReflector()*/
+
+
     
 
 

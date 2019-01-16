@@ -10,10 +10,9 @@
 #include "Machine.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
     
-    Machine machine1; 
+    Machine machine1;
+    
     return 0;
 }
 
