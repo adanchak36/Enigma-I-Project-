@@ -10,7 +10,7 @@ User will enter a character to be encrypted/decrypted.
 
 Rest of machine is still being developed. 
 
-Read the Wiki(https://github.com/adanchak36/Enigma-I-Project-/wiki) for details of encryption algorithm and implementation
+Read the [Wiki](https://github.com/adanchak36/Enigma-I-Project-/wiki) for details of encryption algorithm and implementation
   
   
   References: 
