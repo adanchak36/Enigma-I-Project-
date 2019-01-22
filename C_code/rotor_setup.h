@@ -1,10 +1,9 @@
 #include "machine_struct.h"
-void getMachineInfo(struct machine *machine1);
 
-void setup_Machine(char reflector[], char left_rotor[], char mid_rotor[], char right_rotor[], struct machine *machine1);
+/*Set up of machine configurations */
 
-void setup_rotors(char left_rotor[], char mid_rotor[], char right_rotor[], struct machine *machine1);
+void setMachineOrder(struct machine *machine1); //sets rotor order and reflector (fills in rotors)
 
-void ringSet(char left_rotor[], char mid_rotor[], char right_rotor[], struct machine *machine1); //
+void setRingStart(struct machine *machine1);    //set start of ring settings
 
-//struct create 
+/*end of setupt*/
