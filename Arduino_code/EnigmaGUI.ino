@@ -16,6 +16,14 @@ void drawButton(){
   tft.drawRect(20, 100, 100, 50, ILI9341_RED);
 }
 
+/* Issue with overwriting characters*/ 
+void writeText(int x, int y, int color, int textSize, String text){
+  tft.setCursor(x, y); 
+  tft.setTextColor(color); 
+  tft.setTextSize(textSize); 
+  tft.println(text); 
+} 
+  
 void enterRingSetText(){
   tft.setCursor(50, 50); 
   tft.setTextColor(ILI9341_BLUE); 
@@ -27,36 +35,31 @@ void getRingSettings(){
   int start_x = 25; 
   int start_y = 100; 
   int sqLength = 70; 
-  int sqWidth = 70; 
+  int sqWidth = 70;
+  boolean endRingSet = false; 
 
   writeText(50, 30, ILI9341_BLUE, 2, "Enter Ring Settings"); 
 
+  //tft.line(start_x + 70, start_y - 40, start_x + 190, stary_y - 40); 
+
   tft.drawRect(start_x + 70, start_y - 40, sqLength, sqWidth - 20, ILI9341_BLUE);
 
-  
   tft.drawRect(start_x, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR I button 
   tft.fillRect(start_x, start_y, sqLength,sqWidth, ILI9341_RED); 
-  writeText(start_x, start_y, ILI9341_BLACK, 6, "1"); 
-
+  writeText(start_x + 10, start_y + 10, ILI9341_BLACK, 6, "1"); 
+  
   tft.drawRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR II button 
   tft.fillRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_RED); 
+  writeText(start_x + 110, start_y + 10, ILI9341_BLACK, 6, "2"); 
    
-  
   tft.drawRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR III button 
   tft.fillRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_RED);
+  writeText(start_x + 210, start_y + 10, ILI9341_BLACK, 6, "3"); 
 
   tft.drawRect(start_x + 70, start_y + 90, 125 ,sqWidth - 30, ILI9341_GREEN); //Enter button for ring settings (1,2,3)
   tft.fillRect(start_x + 70, start_y + 90, 125 ,sqWidth - 30, ILI9341_GREEN); 
+  writeText(start_x + 80, start_y + 100, ILI9341_BLACK , 3, "Enter"); 
 
-}
-
-/* Issue with overwriting characters*/ 
-void writeText(int x, int y, int color, int textSize, String text){
-  tft.setCursor(x, y); 
-  tft.setTextColor(color); 
-  tft.setTextSize(2); 
-  tft.println(text); 
-  
 }
 
 void setup() {
@@ -71,7 +74,6 @@ void loop() {
   //enterRingSetText();
   getRingSettings(); 
   
-
   /* Get User Input for all 3 rotors */ 
   Serial.println("Enter Text"); 
   char text = Serial.read(); 
