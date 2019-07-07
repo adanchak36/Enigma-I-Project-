@@ -23,43 +23,42 @@ void writeText(int x, int y, int color, int textSize, String text){
   tft.setTextSize(textSize); 
   tft.println(text); 
 } 
-  
-void enterRingSetText(){
-  tft.setCursor(50, 50); 
-  tft.setTextColor(ILI9341_BLUE); 
-  tft.setTextSize(2); 
-  tft.println("Enter Ring Settings: "); 
-}
 
-void getRingSettings(){
+void getRotorOrder(){
   int start_x = 25; 
   int start_y = 100; 
   int sqLength = 70; 
   int sqWidth = 70;
   boolean endRingSet = false; 
 
-  writeText(50, 30, ILI9341_BLUE, 2, "Enter Ring Settings"); 
+  writeText(50, 20, ILI9341_WHITE, 2, "Enter Rotor Order"); 
 
-  //tft.line(start_x + 70, start_y - 40, start_x + 190, stary_y - 40); 
+  tft.drawRect(start_x + 60, start_y - 45, sqLength + 50, sqWidth - 40, ILI9341_WHITE);
+  tft.fillRect(start_x + 60, start_y - 45, sqLength + 50, sqWidth - 40, ILI9341_WHITE);
 
-  tft.drawRect(start_x + 70, start_y - 40, sqLength, sqWidth - 20, ILI9341_BLUE);
+  //tft.drawRect(start_x + 70, start_y - 40, sqLength, sqWidth - 10, ILI9341_BLUE);
 
-  tft.drawRect(start_x, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR I button 
-  tft.fillRect(start_x, start_y, sqLength,sqWidth, ILI9341_RED); 
-  writeText(start_x + 10, start_y + 10, ILI9341_BLACK, 6, "1"); 
+  tft.drawRect(start_x, start_y, sqLength,sqWidth, ILI9341_ORANGE); //ROTOR I button 
+  tft.fillRect(start_x, start_y, sqLength,sqWidth, ILI9341_ORANGE); 
+  writeText(start_x + 15, start_y + 10, ILI9341_BLACK, 6, "1"); 
   
-  tft.drawRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR II button 
-  tft.fillRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_RED); 
-  writeText(start_x + 110, start_y + 10, ILI9341_BLACK, 6, "2"); 
+  tft.drawRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_ORANGE); //ROTOR II button 
+  tft.fillRect(start_x + 100, start_y, sqLength,sqWidth, ILI9341_ORANGE); 
+  writeText(start_x + 115, start_y + 10, ILI9341_BLACK, 6, "2"); 
    
-  tft.drawRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_RED); //ROTOR III button 
-  tft.fillRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_RED);
-  writeText(start_x + 210, start_y + 10, ILI9341_BLACK, 6, "3"); 
+  tft.drawRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_ORANGE); //ROTOR III button 
+  tft.fillRect(start_x + 200, start_y, sqLength,sqWidth, ILI9341_ORANGE);
+  writeText(start_x + 215, start_y + 10, ILI9341_BLACK, 6, "3"); 
 
-  tft.drawRect(start_x + 70, start_y + 90, 125 ,sqWidth - 30, ILI9341_GREEN); //Enter button for ring settings (1,2,3)
-  tft.fillRect(start_x + 70, start_y + 90, 125 ,sqWidth - 30, ILI9341_GREEN); 
-  writeText(start_x + 80, start_y + 100, ILI9341_BLACK , 3, "Enter"); 
+  tft.drawRect(start_x, start_y + 90, 100, sqWidth - 30, ILI9341_RED); 
+  tft.fillRect(start_x, start_y + 90, 100, sqWidth - 30, ILI9341_RED); 
+  writeText(start_x + 5, start_y + 100, ILI9341_BLACK, 2, "Delete"); 
 
+  tft.drawRect(start_x + 175, start_y + 90, 100, sqWidth - 30, ILI9341_GREEN); 
+  tft.fillRect(start_x + 175, start_y + 90, 100, sqWidth - 30, ILI9341_GREEN); 
+  writeText(start_x + 180, start_y + 100, ILI9341_BLACK, 2, "Enter"); 
+
+  /* Conditional, if you press enter then lets get out of the funciton */ 
 }
 
 void setup() {
@@ -70,10 +69,10 @@ void setup() {
 }
 
 void loop() {
-  /* Show ring setting input text */ 
-  //enterRingSetText();
-  getRingSettings(); 
-  
+  getRotorOrder(); //return a pointer of integer array here 
+
+  //touch data for input/delete/enter here 
+
   /* Get User Input for all 3 rotors */ 
   Serial.println("Enter Text"); 
   char text = Serial.read(); 
