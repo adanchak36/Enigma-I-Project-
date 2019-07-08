@@ -1,25 +1,22 @@
 #include <stdio.h>         // printf, scanf
-#include "machine_struct.h"// struct machine1, constant alphabet size
+#include "configStruct.h"  //configuration struct (holding user input to use for setup)
+#include "machineStruct.h" //machine struct
 #include "rotor_setup.h"   // getMachineInfo(), setup_Machine(), ringSet()
 #include "enigma_encode.h" //getChar(),encryptPlugBoard(),encryptRotors()
 #include <stdlib.h>        // sizeof
 
-
-#define ALPH_LENGTH 27     //constant alphabet size  (check size issues with arrays + 1)
-
-
-
 int main(void){
     char reflector[ALPH], left_rotor[ALPH], mid_rotor[ALPH], right_rotor[ALPH]; //declare the 3 rotors as local variables in main
+    configMachine userConfig; 
     machine machine1; //struct create user's machine setup
-    char plainC; //character that is going to be encrypted
-    char cipherC; //encrypted character
+    char plainC;      //character that is going to be encrypted
+    char cipherC;     //encrypted character
 
-    getMachineInfo(&machine1);//Get user input for machine settings
+    /* End of machine configuration input */
     
-    setup_Machine(reflector, left_rotor, mid_rotor, right_rotor, &machine1); //setup rotor order... ex:3 2 1
+    setMachineOrder(&machine1); //implements rotor order
+    setRingStart(&machine1);    //implements ring settings
     
-    ringSet(left_rotor, mid_rotor, right_rotor, &machine1);
     
     printf("\nRight rotor: ");
     for(int i = 0; i < ALPH; i++){
@@ -42,6 +39,7 @@ int main(void){
     }
     printf("\n"); 
     
+    /*
     plainC = getChar(); //input plaintext character
     
     encryptPlugBoard(&plainC, &machine1); //plugboard scramble

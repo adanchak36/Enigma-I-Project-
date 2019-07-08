@@ -1,5 +1,5 @@
 #include <stdio.h> //sscanf()
-#include "machine_struct.h" //constant alphabet size
+#include "machineStruct.h" //constant alphabet size
 #include "rotor_setup.h"
 #include <string.h> //strcpy
 
