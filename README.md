@@ -1,6 +1,4 @@
 # Enigma-I-Project-
-An embedded engima replica built using arduinos.
-
 The engima machine is a cypher machine used throughout World War II by the Wehrmacht and Luftwaffe. This tool greatly helped keep the German military's communications secret from allied intelligence organizations. Alan Turing broke the engimas encryption in December of 1942. 
 
 Use the machine by first entering three conditions. 
