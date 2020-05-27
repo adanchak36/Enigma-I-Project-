@@ -1,5 +1,5 @@
 #include "enigma_encode.h"
-#include "machine_struct.h"
+#include "machineStruct.h"
 #include <stdio.h> //printf, scanf
 #include <stdlib.h> //sizeof
 
@@ -7,14 +7,7 @@ static int getPosition(char c);
 static int getInvertPos(char c, char rotor[]);
 
 
-char getChar(void){
-    char c;
-    printf("Enter plaintext character:");
-    scanf("  %c", &c);
-    return c;
-}
-
-void encryptPlugBoard(char *plainC, machine *machine1){
+/*void encryptPlugBoard(char *plainC, machine *machine1){
     int i;
     
     for(i = 0; i < sizeof(machine1->plug_board1); i++){ //check if plainC is in plugboard
@@ -22,11 +15,11 @@ void encryptPlugBoard(char *plainC, machine *machine1){
             *plainC = machine1->plug_board2[i];
         }
     }
-}
+} */
 
 static int getPosition(char c){
     char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for(int i = 0; i < sizeof(alphabet); i++){
+    for(int i = 0; i < ALPH; i++){
         if(c == alphabet[i]){
             return i;
         }
@@ -35,7 +28,7 @@ static int getPosition(char c){
 }
 
 static int getInvertPos(char c, char rotor[]){
-    for(int i = 0; i < sizeof(rotor); i++){
+    for(int i = 0; i < ALPH; i++){
         if(c == rotor[i]){
             return i;
         }
@@ -43,47 +36,45 @@ static int getInvertPos(char c, char rotor[]){
     return 0;
 }
 
-char encryptRotors(char plainC, machine *machine1, char right_rotor[], char mid_rotor[], char left_rotor[], char reflector[]){
-    int position;
+char encrypt(char plainC, machine *machine1){
     char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char c; //character being encrypted 
-    
-    position = getPosition(plainC);
-    
-    c = right_rotor[position]; //right rotor substitute
-    
+    int position; 
+    char c; 
+
+    position = getPosition(plainC); 
+    printf("%d\n", position);
+    c = machine1->right_rotor[position]; 
     printf("%c\n", c);
-    
+
     position = getPosition(c);
-    
-    c = mid_rotor[position]; //middle rotor
+    printf("%d\n", position);
+    c = machine1->mid_rotor[position]; 
     printf("%c\n", c);
-    
+
     position = getPosition(c);
-    
-    c = left_rotor[position]; //left rotor
+    c = machine1->left_rotor[position]; 
     printf("%c\n", c);
-    
+
     position = getPosition(c);
-    
-    c = reflector[position];  //reflector
+    c = machine1->reflector[position]; 
     printf("%c\n", c);
-    
-    position = getInvertPos(c, left_rotor); //left rotor inverted
-    
+
+    printf("Inverting now...\n"); 
+
+    position = getInvertPos(c, machine1->left_rotor); 
     c = alphabet[position];
+    printf("%c\n", c); 
+
+    position = getInvertPos(c, machine1->mid_rotor); 
+    c = alphabet[position]; 
     printf("%c\n", c);
-    
-    position = getInvertPos(c, mid_rotor);
-    
-    c = alphabet[position];
+
+    position = getInvertPos(c, machine1->right_rotor); 
+    c = alphabet[position]; 
     printf("%c\n", c);
-    
-    position = getInvertPos(c, right_rotor);
-    
-    c = alphabet[position];
-    
-    return c;
+
+    return c; 
+
 }
 
 

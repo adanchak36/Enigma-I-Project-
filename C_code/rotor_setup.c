@@ -1,23 +1,23 @@
 #include <stdio.h> //sscanf()
+#include "configStruct.h"
 #include "machineStruct.h" //constant alphabet size
 #include "rotor_setup.h"
 #include <string.h> //strcpy
 
-void setMachineOrder(machine *machine1){
-    
+void setMachineOrder(struct configMachine *userConfig, struct machine *machine1){
+
+    /* Pre set rotor configurations */
     char rotor_1[ALPH] = "EKMFLGDQVZNTOWYHXUSPAIBRCJ";
     char rotor_2[ALPH] = "AJDKSIRUXBLHWTMCQGZNPYFVOE";
     char rotor_3[ALPH] = "BDFHJLCPRTXVZNYEIWGAKMUSQO";
     char rotor_4[ALPH] = "ESOVPZJAYQUIRHXLNFTGKDCMWB";
     char rotor_5[ALPH] = "VZBRGITYUPSDNHLXAWMJQOFECK";
-    //M4 Machine rotors below
-    //char rotor_6[ALPH] = "JPGVOUMFYQBENHZRDKASXLICTW";
-    //char rotor_7[ALPH] = "NZJHGRCXMYSWBOUFAIVLPEKQDT";
-    //char rotor_8[ALPH] = "FKQHTLXOCBJSPDZRAMEWNIUYGV";
+
+    /* Reflectors */ 
     char reflect_B[ALPH] = "YRUHQSLDPXNGOKMIEBFZCWVJAT";
     
     
-    switch(machine1->rotor_order[0]){ //input correct user settings into right_rotor[]
+    switch(userConfig->rotor_order[0]){ //input correct user settings into right_rotor[]
         case 1:
             strncpy(machine1->right_rotor, rotor_1, ALPH);
             break;
@@ -35,7 +35,7 @@ void setMachineOrder(machine *machine1){
             break;
     }//end of switch for right rotor
     
-    switch(machine1->rotor_order[1]){ //input correct user settings into mid_rotor[]
+    switch(userConfig->rotor_order[1]){ //input correct user settings into mid_rotor[]
         case 1:
             strncpy(machine1->mid_rotor, rotor_1, ALPH);
             break;
@@ -53,7 +53,7 @@ void setMachineOrder(machine *machine1){
             break;
     }//end of switch for mid rotor
     
-    switch(machine1->rotor_order[2]){ //input correct user settings into left_rotor[]
+    switch(userConfig->rotor_order[2]){ //input correct user settings into left_rotor[]
         case 1:
             strncpy(machine1->left_rotor, rotor_1, ALPH);
             break;
@@ -71,7 +71,7 @@ void setMachineOrder(machine *machine1){
             break;
     }//end of switch for right rotor
     
-    switch(machine1->reflector_set){
+    switch(userConfig->reflector){
         case 'B':
             strncpy(machine1->reflector, reflect_B, ALPH);
             break;
@@ -79,7 +79,8 @@ void setMachineOrder(machine *machine1){
     
 }/*setMachineOrder()*/
 
-void setRingStart(machine *machine1){ //ring settings, so where rotor starts
+
+void setRingStart(struct configMachine *userConfig, struct machine *machine1){ //ring settings, so where rotor starts
     //23 02 17
     char temp_rotor[ALPH]; //Shifting array with temporary holder
     int i;
@@ -87,7 +88,7 @@ void setRingStart(machine *machine1){ //ring settings, so where rotor starts
     int start;
     
     /*Shift right rotor*/
-    start = (machine1->rotor_sett[0] - 1);
+    start = (userConfig->rotor_sett[0] - 1);
     
     for(i = start; i < ALPH; i++){
         temp_rotor[z] = machine1->right_rotor[i];
@@ -107,7 +108,7 @@ void setRingStart(machine *machine1){ //ring settings, so where rotor starts
     //strncpy(right_rotor, temp_rotor, ALPH); //copy array contents over
     
     /*Shift for mid rotor*/
-    start = (machine1->rotor_sett[1] - 1);
+    start = (userConfig->rotor_sett[1] - 1);
     z = 0;
     for(i = start; i < ALPH; i++){
         temp_rotor[z] = machine1->mid_rotor[i];
@@ -123,8 +124,8 @@ void setRingStart(machine *machine1){ //ring settings, so where rotor starts
         machine1->mid_rotor[i] = temp_rotor[i]; //strcpy is not going well
     }
     
-    /*Shifrt for left rotor*/
-    start = (machine1->rotor_sett[2] - 1);
+    /*Shift for left rotor*/
+    start = (userConfig->rotor_sett[2] - 1);
     z = 0;
     for(i = start; i < ALPH; i++){
         temp_rotor[z] = machine1->left_rotor[i];

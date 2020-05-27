@@ -1,5 +1,5 @@
-#ifndef MACHINE_STRUCT_H
-#define MACHINE_STRUCT_H
+#ifndef MACHINESTRUCT_H
+#define MACHINESTRUCT_H
 
 struct Plug{
     char plainT;
@@ -7,9 +7,9 @@ struct Plug{
 };
 
 typedef struct machine{
-    char rightRotor[27];
-    char midRotor[27];
-    char leftRotor[27];
+    char right_rotor[27];
+    char mid_rotor[27];
+    char left_rotor[27];
     char reflector[27];
     struct Plug pBoard[10];
 
